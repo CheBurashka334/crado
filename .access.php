@@ -1,0 +1,9 @@
+<?
+$PERM["yandex_68315c3f65eb5342.txt"]["2"]="X";
+$PERM["yandex_68315c3f65eb5342.txt"]["3"]="X";
+$PERM["yandex_68315c3f65eb5342.txt"]["4"]="X";
+$PERM["yandex_68315c3f65eb5342.txt"]["6"]="X";
+$PERM["yandex_68315c3f65eb5342.txt"]["5"]="X";
+$PERM["yandex_68315c3f65eb5342.txt"]["*"]="X";
+$PERM["/"]["*"]="R";
+?>
