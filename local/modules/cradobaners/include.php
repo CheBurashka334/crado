@@ -3,7 +3,7 @@ CModule::IncludeModule("cradobaners");
 global $DBType;
 
 $arClasses=array(
-    'cMainDull'=>'classes/general/cMainDull.php'
+    'cCradoBaners'=>'classes/general/cCradoBaners.php'
 );
 
 CModule::AddAutoloadClasses("cradobaners",$arClasses);

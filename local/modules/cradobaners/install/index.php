@@ -28,7 +28,7 @@ Class cradobaners extends CModule
     {
         global $DOCUMENT_ROOT, $APPLICATION;
         // Install events
-        RegisterModuleDependences("iblock","OnAfterIBlockElementUpdate","cradobaners","cMainDull","onBeforeElementUpdateHandler");
+        RegisterModuleDependences("iblock","OnAfterIBlockElementUpdate","cradobaners","cCradoBaners","onBeforeElementUpdateHandler");
         RegisterModule($this->MODULE_ID);
         $APPLICATION->IncludeAdminFile("”становка модул€ cradobaners", $DOCUMENT_ROOT."/local/modules/cradobaners/install/step.php");
         return true;
@@ -37,7 +37,7 @@ Class cradobaners extends CModule
     function DoUninstall()
     {
         global $DOCUMENT_ROOT, $APPLICATION;
-        UnRegisterModuleDependences("iblock","OnAfterIBlockElementUpdate","cradobaners","cMainDull","onBeforeElementUpdateHandler");
+        UnRegisterModuleDependences("iblock","OnAfterIBlockElementUpdate","cradobaners","cCradoBaners","onBeforeElementUpdateHandler");
         UnRegisterModule($this->MODULE_ID);
         $APPLICATION->IncludeAdminFile("ƒеинсталл€ци€ модул€ cradobaners", $DOCUMENT_ROOT."/local/modules/cradobaners/install/unstep.php");
         return true;

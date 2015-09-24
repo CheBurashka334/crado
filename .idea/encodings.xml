@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/local/modules/cradobaners/admin/list.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/local/modules/cradobaners/admin/menu.php" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/local/modules/cradobaners/classes/general/cMainDull.php" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/local/modules/cradobaners/classes/general/cCradoBaners.php" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/local/modules/cradobaners/include.php" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/local/modules/cradobaners/install/index.php" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/local/modules/cradobaners/install/step.php" charset="windows-1251" />

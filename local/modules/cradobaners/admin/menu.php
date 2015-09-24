@@ -8,13 +8,9 @@ if ((CModule::IncludeModule("cradobaners")))
     $aMenu = Array(
         "parent_menu" => "global_menu_services",
         "sort"        => 100,
-        "url"         => "parnas.khayrcomment_list.php?lang=".LANGUAGE_ID,
+        "url"         => "cradobaners_list.php?lang=".LANGUAGE_ID,
         "text"        => GetMessage("CRADO_BANER"),
         //"title"       => GetMessage("KHAYR_COMMENT"),
-        "icon"        => "banner_icon",
-        "page_icon"   => "banner_icon",
-        "items_id"    => "khayr_comment",
-        "items"       => Array(),
     );
     return $aMenu;
 }
