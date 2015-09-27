@@ -8,30 +8,39 @@ class cCradoBaners{
      * @return bool
      */
     static function getCradoBaners(){
-        //$arResult = array();
+       //$arResult = array();
 
-        if (!CModule::IncludeModule('highloadblock'))
-            continue;
+        CModule::IncludeModule('iblock');
+        global $DB;
+        $result = $DB->Query('SELECT * FROM b_cradobaners');
 
-        $ID = 2; //highloadblock Brendshl
-
-        //сначала выбрать информацию о ней из базы данных 
-        $hldata = Bitrix\Highloadblock\HighloadBlockTable::getById($ID)->fetch();
-
-
-        //затем инициализировать класс сущности
-        $hlentity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hldata);
-
-        $hlDataClass = $hldata['NAME'].'Table';
-
-        $result = $hlDataClass::getList(array(
-            'select' => array('ID', 'UF_COUNTCLICK','UF_DATECLICK','UF_COUNTVIEW','UF_IDBANERS'),
-
-        ));
-        $ID = '';
+        $arResult = array();
+        $i = 0;
         while($res = $result->fetch())
         {
-            $arResult[]=$res;
+            $arResult[$i]['ID']=$res['ID'];
+            $arResult[$i]['COUNT_CLICK']=$res['UF_COUNTCLICK'];
+            $arResult[$i]['COUNT_VIEW']=$res['UF_COUNTVIEW'];
+            $arResult[$i]['DATE_LAST_CLICK']=$res['UF_DATECLICK'];
+
+            $obElement = CIBlockElement::GetByID($res['UF_IDBANERS']);
+                if($arEl = $obElement->GetNext())
+                {
+                    //$arResult[$i]['BANNER'] = $arEl;
+                    $arResult[$i]['BANNER']['ID'] = $arEl['ID'];
+                    $arResult[$i]['BANNER']['NAME'] = $arEl['NAME'];
+
+                    //Баннер в категории
+                    if($arEl['PREVIEW_PICTURE']!='')
+                    {
+                        $arResult[$i]['BANNER']['BANNER_CATEGORY'] = CFile::ResizeImageGet($arEl['PREVIEW_PICTURE'], array('width'=>140, 'height'=>95), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    }
+                    if($arEl['DETAIL_PICTURE']!='')
+                    {
+                        $arResult[$i]['BANNER']['BANNER_ELEMENT'] = CFile::ResizeImageGet($arEl['DETAIL_PICTURE'], array('width'=>82, 'height'=>140), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    }
+                }
+            $i++;
         }
         return $arResult;
     }

@@ -9,81 +9,58 @@ $APPLICATION->SetTitle(GetMessage("CRADOBANERS_TITLE"));
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 ?>
 <?
-    $banners=array(
-        array(
-            "ID"=>'1',
-            "SRC"=>'/images/images.png',
-            "count_view"=>'251',
-            "count_click"=>'11',
-            "last_date_click"=>'11.10.2015',
-        ),
-        array(
-            "ID"=>'2',
-            "SRC"=>'/images/images.png',
-            "count_view"=>'252',
-            "count_click"=>'12',
-            "last_date_click"=>'12.10.2015',
-        ),
-        array(
-            "ID"=>'3',
-            "SRC"=>'/images/images.png',
-            "count_view"=>'253',
-            "count_click"=>'13',
-            "last_date_click"=>'13.10.2015',
-        )
-
-    );
-
     $banners = cCradoBaners::getCradoBaners();
-
 ?>
-<pre>
-
-    <?print_r($banners);?>
-</pre>
-<style>
-    .baner_table{
-        width:100%;
-        border-spacing: 0px;
-    }
-    .baner_table tr{
-        display: table-row;
-        vertical-align: inherit;
-        border-color: inherit;
-    }
-    .baner_table th, td{
-        border: 1px solid #cecece;
-        padding: 5px;
-    }
-    .baner_table td{
-        text-align: right;
-    }
-</style>
-<table class="baner_table">
-    <tr>
-        <th><?=GetMessage("CRADOBANERS_ID")?></th>
-        <th><?=GetMessage("CRADOBANERS_IMG")?></th>
-        <th><?=GetMessage("CRADOBANERS_COUNTVIEW")?></th>
-        <th><?=GetMessage("CRADOBANERS_COUNTCLICK")?></th>
-        <th><?=GetMessage("CRADOBANERS_DATECLICK")?></th>
-    </tr>
-    <?foreach($banners as $item):?>
-        <tr>
-            <td>
-                <?=$item['ID'];?>
-            </td>
-            <td>
-                <img src="<?=$item['SRC'];?>"
-            </td>
-            <td>
-                <?=$item['count_view']?>
-            </td>
-            <td>
-                <?=$item['count_click']?>
-            </td>
-            <td>
-                <?=$item['last_date_click']?>
-            </td>
-        </tr>
-    <?endforeach;?>
-</table>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/local/modules/cradobaners/install/themes/table.css">
+<div class="container">
+    <table class="table ">
+            <tr>
+                <th><?=GetMessage("CRADOBANERS_ID")?></th>
+                <th><?=GetMessage("CRADOBANERS_BANNER")?></th>
+                <th><?=GetMessage("CRADOBANERS_COUNTVIEW")?></th>
+                <th><?=GetMessage("CRADOBANERS_COUNTCLICK")?></th>
+                <th><?=GetMessage("CRADOBANERS_DATECLICK")?></th>
+            </tr>
+        <?foreach($banners as $item):?>
+            <tr>
+                <td>
+                    <?=$item['ID'];?>
+                </td>
+                <td>
+                    <table class="table  table-bordered">
+                        <tr>
+                            <th><?=GetMessage("CRADOBANERS_ID_BANERS")?></th>
+                            <th><?=GetMessage("CRADOBANERS_NAME")?></th>
+                            <?if(isset($item['BANNER']['BANNER_CATEGORY'])):?>
+                                <th><?=GetMessage("CRADOBANERS_IMG_CAT")?></th>
+                            <?endif;?>
+                            <?if(isset($item['BANNER']['BANNER_ELEMENT'])):?>
+                                <th><?=GetMessage("CRADOBANERS_IMG_EL")?></th>
+                            <?endif;?>
+                        </tr>
+                        <tr>
+                            <td><?=$item['BANNER']['ID']?></td>
+                            <td><?=$item['BANNER']['NAME']?></td>
+                            <?if(isset($item['BANNER']['BANNER_CATEGORY'])):?>
+                                <td><img src="<?=$item['BANNER']['BANNER_CATEGORY']['src']?>"/></td>
+                            <?endif;?>
+                            <?if(isset($item['BANNER']['BANNER_ELEMENT'])):?>
+                                <td><img src="<?=$item['BANNER']['BANNER_ELEMENT']['src']?>"/></td>
+                            <?endif;?>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <?=$item['COUNT_VIEW']?>
+                </td>
+                <td>
+                    <?=$item['COUNT_CLICK']?>
+                </td>
+                <td>
+                    <?=$item['DATE_LAST_CLICK']?>
+                </td>
+            </tr>
+        <?endforeach;?>
+    </table>
+</div>
