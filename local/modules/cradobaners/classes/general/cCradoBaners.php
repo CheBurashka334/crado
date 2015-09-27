@@ -3,7 +3,7 @@ class cCradoBaners{
     static $MODULE_ID="cradobaners";
 
     /**
-     * Хэндлер, отслеживающий изменения в инфоблоках
+     * ’эндлер, отслеживающий изменени¤ в инфоблоках
      * @param $arFields
      * @return bool
      */
