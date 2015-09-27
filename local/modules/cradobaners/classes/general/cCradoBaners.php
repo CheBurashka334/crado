@@ -15,7 +15,7 @@ class cCradoBaners{
 
         $ID = 2; //highloadblock Brendshl
 
-        //сначала выбрать информацию о ней из базы данных
+        //сначала выбрать информацию о ней из базы данных 
         $hldata = Bitrix\Highloadblock\HighloadBlockTable::getById($ID)->fetch();
 
 
