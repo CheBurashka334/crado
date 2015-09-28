@@ -17,17 +17,32 @@ Class cradobaners extends CModule
         include($path."/version.php");
         if (is_array($arModuleVersion) && array_key_exists("VERSION", $arModuleVersion))
         {
-            $this->MODULE_VERSION = $arModuleVersion["VERSION"]; 
+            $this->MODULE_VERSION = $arModuleVersion["VERSION"];
             $this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
         }
         $this->MODULE_NAME = "Модуль Банеры";
         $this->MODULE_DESCRIPTION = "Модуль вывода банеров (показы, переходы, последние переходы)";
     }
 
+    function InstallDB()
+    {
+        global $DB, $DBType, $APPLICATION;
+        $DB->RunSQLBatch($_SERVER['DOCUMENT_ROOT']."/local/modules/cradobaners/install/db/mysql/install.sql");
+        return true;
+    }
+
+    function InstallFiles($arParams = array())
+    {
+        CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/cradobaners/install/admin/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/admin");
+        CopyDirFiles($_SERVER["DOCUMENT_ROOT"]."/local/modules/cradobaners/install/panel/", $_SERVER["DOCUMENT_ROOT"]."/bitrix/themes/.default", true, true);
+        return true;
+    }
     function DoInstall()
     {
         global $DOCUMENT_ROOT, $APPLICATION;
         // Install events
+        $this->InstallDB();
+        $this->InstallFiles();
         RegisterModuleDependences("iblock","OnAfterIBlockElementUpdate","cradobaners","cCradoBaners","onBeforeElementUpdateHandler");
         RegisterModule($this->MODULE_ID);
         $APPLICATION->IncludeAdminFile("Установка модуля cradobaners", $DOCUMENT_ROOT."/local/modules/cradobaners/install/step.php");

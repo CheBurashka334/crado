@@ -9,19 +9,19 @@ $APPLICATION->SetTitle(GetMessage("CRADOBANERS_TITLE"));
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admin_after.php");
 ?>
 <?
-    $banners = cCradoBaners::getCradoBaners();
+$banners = cCradoBaners::getCradoBaners();
 ?>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="/local/modules/cradobaners/install/panel/table.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/local/modules/cradobaners/css/table.css">
 <div class="container">
     <table class="table ">
-            <tr>
-                <th><?=GetMessage("CRADOBANERS_ID")?></th>
-                <th><?=GetMessage("CRADOBANERS_BANNER")?></th>
-                <th><?=GetMessage("CRADOBANERS_COUNTVIEW")?></th>
-                <th><?=GetMessage("CRADOBANERS_COUNTCLICK")?></th>
-                <th><?=GetMessage("CRADOBANERS_DATECLICK")?></th>
-            </tr>
+        <tr>
+            <th><?=GetMessage("CRADOBANERS_ID")?></th>
+            <th><?=GetMessage("CRADOBANERS_BANNER")?></th>
+            <th><?=GetMessage("CRADOBANERS_COUNTVIEW")?></th>
+            <th><?=GetMessage("CRADOBANERS_COUNTCLICK")?></th>
+            <th><?=GetMessage("CRADOBANERS_DATECLICK")?></th>
+        </tr>
         <?foreach($banners as $item):?>
             <tr>
                 <td>
