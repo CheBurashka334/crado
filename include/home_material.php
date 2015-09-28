@@ -260,14 +260,19 @@
                                     
                                     ?>
                                         <div class="medium baner <?if($w_container <= 990){?>marginrigth10<?}else{$w_container = 0;}?>  left">
-                                        <?      
-                            				$file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
-                            				BX_RESIZE_IMAGE_EXACT);?>
-                                        <?
-                                                $width = '488px';
-                                                $height = '328px';
-                                        ?>
-                                           <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                                            <?
+                                            //Производим запись в БД по банеру
+                                            CModule::IncludeModule('cradobaners');
+                                            $banners = cCradoBaners::setCradoBanersView($baner[$k]['ID']);
+                                            ?>
+                                            <?
+                                                $file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
+                                                BX_RESIZE_IMAGE_EXACT);?>
+                                            <?
+                                                    $width = '488px';
+                                                    $height = '328px';
+                                            ?>
+                                           <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$baner[$k]['ID']?>);">
                                                 <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                                            </a>
                                            <?
@@ -310,14 +315,19 @@
                                 
                                 ?>
                                     <div class="medium baner <?if($w_container <= 990){?>marginrigth10<?}else{$w_container = 0;}?>  left">
-                                    <?      
-                        				$file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
-                        				BX_RESIZE_IMAGE_EXACT);?>
-                                    <?
+                                        <?
+                                        //Производим запись в БД по банеру
+                                        CModule::IncludeModule('cradobaners');
+                                        $banners = cCradoBaners::setCradoBanersView($baner[$k]['ID']);
+                                        ?>
+                                        <?
+                                            $file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
+                                            BX_RESIZE_IMAGE_EXACT);?>
+                                        <?
                                             $width = '490px';
                                             $height = '330px';
-                                    ?>
-                                       <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                                        ?>
+                                       <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$baner[$k]['ID']?>);">
                                             <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                                        </a>
                                        <?
@@ -334,14 +344,19 @@
                                 
                                 ?>
                                     <div class="medium baner <?if($w_container <= 990){?>marginrigth10<?}else{$w_container = 0;}?>  left">
-                                    <?      
-                        				$file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
-                        				BX_RESIZE_IMAGE_EXACT);?>
-                                    <?
+                                        <?
+                                        //Производим запись в БД по банеру
+                                        CModule::IncludeModule('cradobaners');
+                                        $banners = cCradoBaners::setCradoBanersView($baner[$k]['ID']);
+                                        ?>
+                                        <?
+                                            $file = CFile::ResizeImageGet($baner[$k]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
+                                            BX_RESIZE_IMAGE_EXACT);?>
+                                        <?
                                             $width = '490px';
                                             $height = '330px';
-                                    ?>
-                                       <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                                        ?>
+                                       <a href="<?=$baner[$k]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$baner[$k]['ID']?>);">
                                             <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                                        </a>
                                        <?

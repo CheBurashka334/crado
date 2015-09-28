@@ -10,6 +10,7 @@ if ((CModule::IncludeModule("cradobaners")))
         "sort"        => 100,
         "url"         => "cradobaners_list.php?lang=".LANGUAGE_ID,
         "text"        => GetMessage("CRADO_BANER"),
+        "icon"        => "banner_icon", // малая иконка
         //"title"       => GetMessage("KHAYR_COMMENT"),
     );
     return $aMenu;

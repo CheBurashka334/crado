@@ -12,7 +12,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_admi
     $banners = cCradoBaners::getCradoBaners();
 ?>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="/local/modules/cradobaners/install/themes/table.css">
+<link rel="stylesheet" href="/local/modules/cradobaners/install/panel/table.css">
 <div class="container">
     <table class="table ">
             <tr>

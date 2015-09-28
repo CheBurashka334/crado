@@ -41,14 +41,19 @@ $this->setFrameMode(true);
 				if($k == 6){
 				?>
 					<div class="medium baner marginrigth10 left">
-						<?      
+                        <?
+                        //Производим запись в БД по банеру
+                        CModule::IncludeModule('cradobaners');
+                        $banners = cCradoBaners::setCradoBanersView($arParams['baner_c'][1]['ID']);
+                        ?>
+                        <?
                             $file = CFile::ResizeImageGet($arParams['baner_c'][1]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
                             BX_RESIZE_IMAGE_EXACT);?>
                         <?
                             $width = '488px';
                             $height = '328px';
                         ?>
-                        <a href="<?=$arParams['baner_c'][1]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                        <a href="<?=$arParams['baner_c'][1]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$arParams['baner_c'][1]['ID']?>);">
                             <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                         </a>
 					</div>
@@ -67,14 +72,19 @@ $this->setFrameMode(true);
 				if($k == 12){
 				?>
 					<div class="medium marginrigth10 baner left">
-						<?      
+                        <?
+                        //Производим запись в БД по банеру
+                        CModule::IncludeModule('cradobaners');
+                        $banners = cCradoBaners::setCradoBanersView($arParams['baner_c'][2]['ID']);
+                        ?>
+                        <?
                             $file = CFile::ResizeImageGet($arParams['baner_c'][2]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
                             BX_RESIZE_IMAGE_EXACT);?>
                         <?
                             $width = '488px';
                             $height = '328px';
                         ?>
-                        <a href="<?=$arParams['baner_c'][2]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                        <a href="<?=$arParams['baner_c'][2]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$arParams['baner_c'][2]['ID']?>);">
                             <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                         </a>
 					</div>
@@ -202,14 +212,19 @@ $this->setFrameMode(true);
 				if($k == 1){
 				?>
 					<div class="medium baner left">
-						<?      
+                        <?
+                        //Производим запись в БД по банеру
+                        CModule::IncludeModule('cradobaners');
+                        $banners = cCradoBaners::setCradoBanersView($arParams['baner_c'][0]['ID']);
+                        ?>
+                        <?
                             $file = CFile::ResizeImageGet($arParams['baner_c'][0]['PREVIEW_PICTURE'], array('width'=>490, 'height'=>330),
                             BX_RESIZE_IMAGE_EXACT);?>
                         <?
                             $width = '488px';
                             $height = '328px';
                         ?>
-                        <a href="<?=$arParams['baner_c'][0]['PROPERTY'][0]['link']['VALUE']?>" target="_blank">
+                        <a href="<?=$arParams['baner_c'][0]['PROPERTY'][0]['link']['VALUE']?>" target="_blank" onclick="setClick(<?=$arParams['baner_c'][0]['ID']?>);">
                             <img src="<?=$file['src'];?>" width="<?=$width?>" height="<?=$height?>"/>
                         </a>
 					</div>

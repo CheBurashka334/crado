@@ -542,13 +542,18 @@ $this->setFrameMode(true);
 					if(count($baner)!=0) break;
 				endforeach;?>
 				<?if(count($baner)!=0){?>
+                    <?
+                    //Производим запись в БД по банеру
+                    CModule::IncludeModule('cradobaners');
+                    $banners = cCradoBaners::setCradoBanersView($baner[0]['ID']);
+                    ?>
 					<?      
 						$file = CFile::ResizeImageGet($baner[0]['DETAIL_PICTURE'], array('width'=>280, 'height'=>480),
 						BX_RESIZE_IMAGE_EXACT);
 						$width = '280px';
 						$height = '480px';
 					?>
-					<a href="<?=$baner[0]['PROPERTY'][0]['link']['~VALUE']?>" target="_blank">
+					<a href="<?=$baner[0]['PROPERTY'][0]['link']['~VALUE']?>" target="_blank" onclick="setClick(<?=$baner[0]['ID']?>);">
 						<img src="<?=$file['src']?>" width="<?=$width?>" height="<?=$height?>"/>
 					</a>
 				<?}?>

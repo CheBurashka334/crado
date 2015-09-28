@@ -1209,3 +1209,21 @@ function setLogin(event)
 {
     $('input.login_input').val($(event).val());
 }
+
+
+
+
+/*function banner click*/
+function setClick(id){
+    $.ajax({
+        url: '/include/cradoBannerClick.php',
+        type: 'post',
+        data: {id: id},
+        success: function(data)
+        {
+            /*$('.content-preloader').css('display','none');
+            $('#material').html(data);*/
+            //alert(data);
+        }
+    });
+}

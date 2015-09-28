@@ -21,8 +21,6 @@ $this->setFrameMode(true);
         LocalRedirect('/404.php');
     }*/
 ?>
-
-
 <div class="place">
     <div class="bgray-light">
         <div class="container place-preview">
@@ -182,8 +180,7 @@ $this->setFrameMode(true);
                 <div class="head-event">
                     <div class="imag left">
                         <?      
-                            $file = CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], array('width'=>475, 'height'=>360),
-                             BX_RESIZE_IMAGE_EXACT);?>
+                            $file = CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], array('width'=>475, 'height'=>360),BX_RESIZE_IMAGE_EXACT);?>
                             <?
                                $width = '475px';
                                $height = '360px';
@@ -323,7 +320,7 @@ $this->setFrameMode(true);
 					$UF_URL='//'.$_SERVER['HTTP_HOST'].$GLOBALS["APPLICATION"]->GetCurPage();
 					
 					if (!CModule::IncludeModule('highloadblock'))
-													   continue;
+                        continue;
 													 
 					$ID = 1; //highloadblock Brendshl
 													 
@@ -416,13 +413,18 @@ $this->setFrameMode(true);
 					if(count($baner)!=0) break;
 				endforeach;?>
 				<?if(count($baner)!=0){?>
+                    <?
+                        //Производим запись в БД по банеру
+                        CModule::IncludeModule('cradobaners');
+                        $banners = cCradoBaners::setCradoBanersView($baner[0]['ID']);
+                    ?>
 					<?      
 						$file = CFile::ResizeImageGet($baner[0]['DETAIL_PICTURE'], array('width'=>280, 'height'=>480),
 						BX_RESIZE_IMAGE_EXACT);
 						$width = '280px';
 						$height = '480px';
 					?>
-					<a href="<?=$baner[0]['PROPERTY'][0]['link']['~VALUE']?>" target="_blank">
+					<a href="<?=$baner[0]['PROPERTY'][0]['link']['~VALUE']?>" target="_blank" onclick="setClick(<?=$baner[0]['ID']?>);">
 						<img src="<?=$file['src']?>" width="<?=$width?>" height="<?=$height?>"/>
 					</a>
 				<?}?>

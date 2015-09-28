@@ -44,4 +44,35 @@ class cCradoBaners{
         }
         return $arResult;
     }
+
+    static function setCradoBanersView($id){
+
+        global $DB;
+        //$id=10;
+        $arResult = $DB->Query('SELECT * FROM b_cradobaners WHERE UF_IDBANERS = '.$id);
+        while($res = $arResult->fetch())
+        {
+            $result = $res;
+        }
+        if(isset($result)) {
+            $DB->Query('UPDATE b_cradobaners SET UF_COUNTVIEW=UF_COUNTVIEW+1 WHERE UF_IDBANERS = '.$id);
+            //return 'UPDATE';
+        }
+        else{
+            $return = cCradoBaners::addCradoBanners($id);
+            //return $return;
+        }
+    }
+    static function addCradoBanners($id){
+        global $DB;
+        $DB->Query('INSERT INTO b_cradobaners (UF_IDBANERS,UF_COUNTVIEW,UF_COUNTCLICK,UF_DATECLICK) VALUES ('.$id.',1,0,"0000-00-00 00:00:00")');
+        //return 'INSERT';
+    }
+
+    static function setCradoBanersClick($id){
+        global $DB;
+        $date = date('Y-m-d H:i:s');
+        $DB->Query('UPDATE b_cradobaners SET UF_COUNTCLICK=UF_COUNTCLICK+1, UF_DATECLICK="'.$date.'" WHERE UF_IDBANERS = '.$id);
+        //return 'ClickOK';
+    }
 }
